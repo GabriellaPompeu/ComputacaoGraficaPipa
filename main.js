@@ -31,11 +31,39 @@ class Scene {
                 1.0, 1.0, 0.0, 1.0,
             ],
         ], 3);
+
+        this.tail1 = gpu.createShape([
+            [
+                0.0, 0.0, 0.0, 1.0,
+                -0.05, -0.0625, 0.0, 1.0,
+                0.0, -0.125, 0.0, 1.0,
+            ],
+            [
+                0.5, 0.0, 0.8, 1.0,
+                0.5, 0.0, 0.8, 1.0,
+                0.5, 0.0, 0.8, 1.0,
+            ]
+        ], 3);
+
+        this.tail2 = gpu.createShape([
+            [
+                0.0, -0.125, 0.0, 1.0,
+                0.05, -0.1875, 0.0, 1.0,
+                0.0, -0.25, 0.0, 1.0,
+            ],
+            [
+                0.2, 0.5, 0.9, 1.0,
+                0.2, 0.5, 0.9, 1.0,
+                0.2, 0.5, 0.9, 1.0,
+            ]
+        ], 3);
     }
 
     draw(gpu) {
         gpu.draw(this.program, this.triangle1);
         gpu.draw(this.program, this.triangle2);
+        gpu.draw(this.program, this.tail1);
+        gpu.draw(this.program, this.tail2);
     }
 }
 
