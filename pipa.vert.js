@@ -1,8 +1,14 @@
 export default /* wgsl */ `
+struct Uniforms {
+  mvp : mat4x4f,
+};
+
 struct VertexOutput {
   @builtin(position) position : vec4f,
   @location(0) color : vec4f,
 };
+
+@group(0) @binding(0) var<uniform> uniforms : Uniforms;
 
 @vertex
 fn main(
@@ -10,7 +16,7 @@ fn main(
   @location(1) color : vec4f,
 ) -> VertexOutput {
   var output : VertexOutput;
-  output.position = position;
+  output.position = uniforms.mvp * position;
   output.color = color;
   return output;
 }
